@@ -1,0 +1,11 @@
+.BannerLogo{
+    display: block;
+    text-align: center;
+    background-image: url("./BannerLogo2.png");
+    /* position: absolute; */
+    min-width: 100%;
+    min-height: 45vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}

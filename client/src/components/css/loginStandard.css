@@ -1,0 +1,19 @@
+.takeSpace{
+    display: block;
+    text-align: center;
+    background-color: #272727;
+    /* position: absolute; */
+    min-width: 100%;
+    min-height: 8vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.loginBox{
+    height: 600px;
+    width: 70%;
+    border: 1px solid black;
+    display: inline-block;
+    margin-top: 20px;
+}
