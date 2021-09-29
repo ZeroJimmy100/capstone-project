@@ -16,6 +16,9 @@ dotenv.config();
 
 const LocalStrategy = passportLocal.Strategy;
 const url:any = process.env.MONGO_DB_URL;
+const local_url: any = process.env.URL_APP;
+const mongodb_port:any = process.env.MONGO_DB_PORT;
+const client_port:any = process.env.CLIENT_PORT;
 // const key:any = process.env.SENDGRID_API_KEY;
 
 // sgMail.setApiKey(key);
@@ -37,7 +40,7 @@ mongoose.connect(url, {},
 
 const app = express();
 app.use(express.json());
-app.use(cors({origin: "http://localhost:3000", credentials: true}));
+app.use(cors({origin: local_url+client_port, credentials: true}));
 app.use(
     session({
         secret: "secretcode",
@@ -189,6 +192,6 @@ app.patch("/update/update-user", async (req: Request, res: Response) => {
 
 // });
 
-app.listen(4000 , () => {
-    console.log("server started");
+app.listen(mongodb_port, () => {
+    console.log(`server started`);
 })

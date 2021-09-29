@@ -39,7 +39,9 @@ const SignUpSchema = Yup.object().shape({
     lastName: Yup.string()
         .required("Last Name is required")
             
-})
+});
+
+const register_url: any = process.env.REACT_APP_URL_REGISTER;
 
 export default function Registration() {
 
@@ -70,7 +72,7 @@ export default function Registration() {
     const handleSubmit = (values: FormValues): void => {
         console.log(values.email);
         console.log(values.password);
-        axios.post('http://localhost:4000/register', {
+        axios.post(register_url, {
             email: values.email,
             password: values.password,
             firstName: values.firstName,
@@ -89,7 +91,6 @@ export default function Registration() {
 
     return (
         <div>
-            <div className="takeSpace"></div>
             <div className="loginBox">
                 <h1>Register</h1>
                 <Formik

@@ -11,6 +11,8 @@ import { UserInterface } from 'src/interface/UserInterface';
 dotenv.config();
 const sgMail = require('@sendgrid/mail');
 const key:any = process.env.SENDGRID_API_KEY;
+const local_url: any = process.env.URL_APP;
+const client_port: any = process.env.CLIENT_PORT;
 sgMail.setApiKey(key);
 const RegisterRoute = Router();
 
@@ -72,14 +74,14 @@ RegisterRoute.get('/verify-email', async (req: Request, res: Response, next) => 
     try{
         const user = await User.findOneAndUpdate({emailToken: req.query.token}, {isVerified: true});
         if(!user){
-            return res.redirect('http://localhost:3000');
+            return res.redirect(`${local_url+client_port}`);
         }
         await user.save()
         const newUser = await User.findOneAndUpdate({emailToken: req.query.token}, {emailToken: null});
         await newUser.save();
         await req.login(newUser, async (err) => {
             if(err) return next(err);
-            res.redirect('http://localhost:3000');
+            res.redirect(`${local_url+client_port}`);
         });
     } catch(error){
         console.log(error);
