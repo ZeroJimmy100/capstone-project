@@ -27,9 +27,7 @@ const UserSchema = new mongoose.Schema({
         type: Number
     },
     listOfAddress: [{
-        streetAddress: {
-            type: String
-        }
+        type: String
     }],
     phoneNum: {
         type: String,
@@ -42,6 +40,10 @@ const UserSchema = new mongoose.Schema({
     lastName: {
         type: String,
         required: true
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
 });
 

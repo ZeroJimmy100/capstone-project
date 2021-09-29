@@ -17,7 +17,7 @@ dotenv.config();
 const LocalStrategy = passportLocal.Strategy;
 const url:any = process.env.MONGO_DB_URL;
 const local_url: any = process.env.URL_APP;
-const mongodb_port:any = process.env.MONGO_DB_PORT;
+const PORT:any = process.env.PORT;
 const client_port:any = process.env.CLIENT_PORT;
 // const key:any = process.env.SENDGRID_API_KEY;
 
@@ -82,7 +82,8 @@ passport.deserializeUser((id: string, cb) => {
             username: user.username,
             isVerified: user.isVerified,
             firstName: user.firstName,
-            lastName: user.lastName
+            lastName: user.lastName,
+            isAdmin: user.isAdmin
         };
         cb(err, userInformation);
     })
@@ -192,6 +193,6 @@ app.patch("/update/update-user", async (req: Request, res: Response) => {
 
 // });
 
-app.listen(mongodb_port, () => {
+app.listen(PORT, () => {
     console.log(`server started`);
 })

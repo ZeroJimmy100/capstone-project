@@ -7,7 +7,6 @@ import crypto from 'crypto';
 import dotenv from 'dotenv';
 import { UserInterface } from 'src/interface/UserInterface';
 
-
 dotenv.config();
 const sgMail = require('@sendgrid/mail');
 const key:any = process.env.SENDGRID_API_KEY;
@@ -42,7 +41,7 @@ RegisterRoute.post('/', async (req: Request, res: Response) => {
                 listOfAddress: [],
                 phoneNum: "",
                 firstName,
-                lastName
+                lastName,
             });
             await newUser.save();
 
@@ -60,6 +59,8 @@ RegisterRoute.post('/', async (req: Request, res: Response) => {
                     <p>Thanks for registering on our site.</p>
                     <p>Please click on the link below to verify your account.</p>
                     <button><a href="http://${req.headers.host}/register/verify-email?token=${cryptoKey}">Verify your account</a></button>
+                    <p>--------------------------------------------------------------</p>
+                    <p>HR LookUp</p>
                 `
             }
             sgMail.send(message)
