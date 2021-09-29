@@ -22,7 +22,10 @@ const LoginSchema = Yup.object().shape({
         .required("Email is Required"),
     password: Yup.string()
         .required("Please enter a password")
-})
+});
+
+const login_url: any = process.env.REACT_APP_URL_LOGIN;
+const context_url: any = process.env.REACT_APP_URL_USER;
 
 export default function Login() {
     // const [email, setEmail] = useState<string>("");
@@ -31,7 +34,7 @@ export default function Login() {
     // const [isNext, setIsNext] = useState<boolean>(true);
 
     const login = (values: FormValues): void => {
-        axios.post("http://localhost:4000/login", {
+        axios.post(login_url, {
             email: values.email,
             password: values.password
         }, {
@@ -47,7 +50,7 @@ export default function Login() {
     }
 
     const getUser = () => {
-        axios.get("http://localhost:4000/user", {
+        axios.get(context_url, {
             withCredentials: true
         }).then(res => {
             console.log(res.data);
@@ -55,8 +58,7 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <div className="takeSpace"></div>
+        <div style={{minHeight: '100%'}}>
             <div className="loginBox">
                 <h1>Login</h1>
                 <Formik

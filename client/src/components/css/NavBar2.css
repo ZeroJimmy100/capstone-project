@@ -1,0 +1,24 @@
+.header2{
+    background-color: #414141;
+    width: 100%;
+    z-index: 1;
+    height: 10%;
+    display: inline-block;
+    text-align: center;
+}
+
+#navbar2 {
+    color: white;
+    /* vertical-align: middle; */
+    padding: 10px;
+    display: inline;
+}
+
+#navbar2:visited{
+    color: white;
+}
+
+#navbar2:hover{
+    color: rgb(255, 253, 125);
+    border: 1px solid white;
+}

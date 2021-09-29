@@ -104,7 +104,7 @@ export default function NavBar() {
                 }
                 {ctx ? (
                   <>
-                    <p style={{float:'left', color: 'white', fontFamily: 'cursive', marginLeft: '1%'}}>{ctx.firstName}</p>
+                    <p style={{float:'left', color: 'white', fontFamily: 'cursive', marginLeft: '1%'}}>Hello, {ctx.firstName}</p>
                   </>
                   ): null}
                 <input className="menu-btn" type="checkbox" id="menu-btn"/>
@@ -117,7 +117,7 @@ export default function NavBar() {
                         <>
                           <li><a href="/Dashboard">Dashboard</a></li>
                           <li><a href="/profile">Profile</a></li>
-                          <li><a href="/cart">Cart <Image src={yellowCart} fluid alt="cart" className="cartImg"/></a></li>
+                          <li><a href="/my-cart">Cart <Image src={yellowCart} fluid alt="cart" className="cartImg"/></a></li>
                           <li><a href="/my-market">My Market</a></li>
                           <li><a href="/" onClick={logout}>Logout</a></li>
                         </>

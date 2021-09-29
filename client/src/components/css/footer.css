@@ -1,0 +1,15 @@
+.footer{
+    display: block;
+    text-align:center;
+    min-width: 100%;
+    min-height: 5vh;
+    background-color: #272727;
+    z-index: 1;
+}
+
+.footer p{
+    color: white;
+    background-color: #272727;
+    display: inline-block;
+
+}

@@ -11,6 +11,9 @@ import SpeakingIcon from './components/css/speakingIcon.png';
 import Login from './components/UserLogin/Login';
 import { myContext } from './components/context/UserContext';
 import Registration from './components/UserLogin/Registration';
+import Footer from './components/footer/Footer';
+import FashionPage from './components/commercePages/fashion/FashionPage';
+import Cart from './components/commercePages/Cart';
 // import {createSpeechlySpeechRecognition} from '@speechly/speech-recognition-polyfill';
 
 function App() {
@@ -99,8 +102,14 @@ function App() {
               <Route path="/testing">
                 <Testing/>
               </Route>
+              <Route path="/Fashion">
+                <FashionPage/>
+              </Route>
               <Route path="/login">
                 <Login/>
+              </Route>
+              <Route path="/my-cart">
+                <Cart/>
               </Route>
               <Route path="/registration">
                 <Registration/>
@@ -108,6 +117,7 @@ function App() {
             </Switch>
         {/* {redirect} */}
       </Router>
+      <Footer/>
       {/* {isStart ?
         <button onKeyDown={handleSpace} style={{float:'left', marginTop:'.5%', backgroundColor: "transparent"}} onClick={startListening}><img src={SpeakingIcon} style={{height:'40px', width:"40px"}}/></button> : null
       } */}
