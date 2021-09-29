@@ -70,8 +70,6 @@ export default function Registration() {
     // }
 
     const handleSubmit = (values: FormValues): void => {
-        console.log(values.email);
-        console.log(values.password);
         axios.post(register_url, {
             email: values.email,
             password: values.password,
