@@ -15,7 +15,7 @@ import routes from './routes/AllRoutes/routes';
 dotenv.config();
 
 const LocalStrategy = passportLocal.Strategy;
-const url:any = process.env.MONGO_DB_URL;
+const url:any = process.env.MONGODB_URL;
 const local_url: any = process.env.URL_APP;
 const PORT:any = process.env.PORT;
 const client_port:any = process.env.CLIENT_PORT;
