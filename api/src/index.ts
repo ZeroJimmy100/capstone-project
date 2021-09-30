@@ -17,7 +17,7 @@ dotenv.config();
 const LocalStrategy = passportLocal.Strategy;
 const url:any = process.env.MONGODB_URL;
 const local_url: any = process.env.URL_APP;
-const PORT:any = process.env.PORT;
+const PORT:any = process.env.PORT || 8080;
 const client_port:any = process.env.CLIENT_PORT;
 // const key:any = process.env.SENDGRID_API_KEY;
 
@@ -48,6 +48,10 @@ app.use(
         saveUninitialized: true
     })
 );
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(''))
+}
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
