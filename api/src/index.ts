@@ -238,18 +238,6 @@ app.post("/payment", cors(), async (req, res) => {
     }
 });
 
-async function getData(){
-    let url:any = process.env.HEROKU_PAGE;
-    let resp = await fetch(url);
-    return await resp.json();
-}
-
-window.onload = () => {
-    async function run() {
-        let data = await getData();
-    }
-}
-
 app.listen(PORT, () => {
     console.log(`server started`);
 })
