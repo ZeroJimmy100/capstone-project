@@ -27,7 +27,7 @@ export default function NavBar() {
   
     let redirect:any = "";
   
-    const pages = ['home', 'testing'];
+    const pages = ['home', 'testing', 'login'];
     const URLs:any = {
         home: "/",
         testing: "/testing",
@@ -98,9 +98,9 @@ export default function NavBar() {
     return (
         
             <header className = "header">
-                <a href="/" className="Mylogo"><Image className="homeImg" src={LogoIcon} fluid alt=""/></a>
+                <a href="/" className="Mylogo"><Image className="homeImg" src={LogoIcon} fluid alt="" style={{height:'50px'}}/></a>
                 {isStart ?
-                    <button style={{float:'left', marginTop:'.5%', backgroundColor: "transparent"}} onClick={startListening}><img src={SpeakingIcon} style={{height:'40px', width:"40px"}}/></button> : null
+                    <button style={{float:'left', marginTop:'.5%', backgroundColor: "transparent", height:"52px"}} onClick={startListening}><img src={SpeakingIcon} style={{height:'40px', width:"40px"}}/></button> : null
                 }
                 {ctx ? (
                   <>

@@ -10,7 +10,7 @@ import dotenv from 'dotenv';
 import User from './models/userModel';
 import { UserInterface } from './interface/UserInterface';
 import routes from './routes/AllRoutes/routes';
-
+import Stripe from 'stripe';
 
 dotenv.config();
 
@@ -19,6 +19,10 @@ const url:any = process.env.MONGODB_URL;
 const local_url: any = process.env.URL_APP;
 const PORT:any = process.env.PORT || 8080;
 const client_port:any = process.env.CLIENT_PORT;
+const STRIPE_KEY:any = process.env.STRIPE_KEY;
+const stripe = new Stripe(STRIPE_KEY, {
+    apiVersion: '2020-08-27'
+});
 // const key:any = process.env.SENDGRID_API_KEY;
 
 // sgMail.setApiKey(key);
@@ -196,6 +200,43 @@ app.patch("/update/update-user", async (req: Request, res: Response) => {
 //     let { username } = req.body;
 
 // });
+
+// payment route
+app.post("/payment", cors(), async (req, res) => {
+    let{ amount, id } = req.body;
+    try{
+        const createCustomer = async () => {
+            const params: Stripe.CustomerCreateParams = {
+              description: 'test customer',
+            };
+          
+            const customer: Stripe.Customer = await stripe.customers.create(params);
+          
+            console.log(customer.id);
+          };
+          createCustomer();
+        const payment = await stripe.paymentIntents.create({
+            amount,
+            currency: "USD",
+            description: "LookUp Company",
+            payment_method: id,
+            confirm: true,
+            capture_method: 'manual',
+        });
+
+        console.log("Payment", payment);
+        res.json({
+            message: "Payment successful",
+            success: true
+        });
+    } catch (error){
+        console.log("Error", error);
+        res.json({
+            messsage: "Payment failed",
+            success: false
+        });
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`server started`);

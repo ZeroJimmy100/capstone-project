@@ -56,11 +56,11 @@ RegisterRoute.post('/', async (req: Request, res: Response) => {
                 `,
                 html: `
                     <h1>Hello new user</h1>
-                    <p>Thanks for registering on our site.</p>
-                    <p>Please click on the link below to verify your account.</p>
+                    <p>Thank you for registering on our site.</p>
+                    <p>For more accessibility on our site, please click on the link below to verify your account.</p>
                     <button><a href="http://${req.headers.host}/register/verify-email?token=${cryptoKey}">Verify your account</a></button>
                     <p>--------------------------------------------------------------</p>
-                    <p>HR LookUp</p>
+                    <p>HR papi</p>
                 `
             }
             sgMail.send(message)
